@@ -32,18 +32,69 @@
 
   <!-- 推荐歌曲部分 -->
   <view class="recomendContainer">
-   <NavHeader title="推荐歌曲" nav="为你精心推荐"></NavHeader>
+    <!-- 推荐歌曲头部 -->
+    <NavHeader title="推荐歌曲" nav="为你精心推荐"></NavHeader>
+    <!-- 推荐歌曲内容部分 -->
+    <scroll-view class="recomendScroll" enable-flex scroll-x>
+      <view class="scrollItem" wx:for-item="recommendItem" wx-for-index="recommendIndex" wx:for="{{recommendList}}"
+        wx:key="id">
+        <image src="{{recommendItem.picUrl}}"></image>
+        <text>{{recommendItem.name}}</text>
+      </view>
+    </scroll-view>
   </view>
-  <!-- 推荐歌曲滚动部分 -->
-  <scroll-view class="recomendScroll" enable-flex scroll-x>
-    <view class="scrollItem" wx:for-item="recommendItem" wx-for-index="recommendIndex" wx:for="{{recommendList}}" wx:key="id">
-      <image src="{{recommendItem.picUrl}}"></image>
-      <text>{{recommendItem.name}}</text>
-    </view>
-  </scroll-view>
 
   <!-- 排行榜部分 -->
   <view class="topContainer">
+    <!-- 排行榜头部 -->
     <NavHeader title="排行榜" nav="歌曲风向标"></NavHeader>
+    <!-- 排行榜内容部分 -->
+    <swiper class="topSwiper" next-margin="50rpx">
+      <swiper-item>
+        <view class="swiperItem">
+          <view class="title">云音乐热歌榜</view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">1</text>
+            <text class="musicName">七里香</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">2</text>
+            <text class="musicName">夜曲</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">3</text>
+            <text class="musicName">算什么男人</text>
+          </view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">3</text>
+            <text class="musicName">算什么男人</text>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiperItem">
+          <view class="title">云音乐热歌榜</view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">1</text>
+            <text class="musicName">七里香</text>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiperItem">
+          <view class="title">云音乐热歌榜</view>
+          <view class="musicItem">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="count">1</text>
+            <text class="musicName">七里香</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 </view>
