@@ -95,6 +95,10 @@
   text-align: center;
 }
 .musicItem .musicName{
-  width: 180rpx;
+  height: 100rpx;
   line-height: 100rpx;
+  max-width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

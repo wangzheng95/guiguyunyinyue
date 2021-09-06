@@ -5,16 +5,28 @@ Page({
   // 页面的初始数据
   data: {
     bannerList: [],
-    recommendList: []
+    recommendList: [],
+    topList: []
   },
 
   // 生命周期函数--监听页面加载
   onLoad: async function (options) {
     let bannerData = await request('/banner', {type:2})
     let recommendData = await request('/personalized',{limit:20})
+    // 请求排行榜内容数据
+    let topIndex = 0, topResult = []
+    while (topIndex < 5) {
+      let topData = await request('/top/list',{idx: topIndex++})
+      let topItem = {name: topData.playlist.name, tracks: topData.playlist.tracks.slice(0,3)}
+      topResult.push(topItem)
+      this.setData({
+        topList: topResult
+      })
+    }
     this.setData({
       bannerList: bannerData.banners,
-      recommendList: recommendData.result
+      recommendList: recommendData.result,
+      topList: topResult
     })
     // console.log(this.data.bannerList,recommendData);
   },
