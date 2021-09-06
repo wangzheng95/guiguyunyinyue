@@ -1,0 +1,74 @@
+/* 轮播图部分 */
+.banner{
+  height: 300rpx;
+  width: 100%;
+}
+.banner image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 五个图标导航区域 */
+.navContainer{
+  display: flex;
+  /* justify-content: space-between; */
+}
+.navItem{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navItem .iconfont{
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: rgb(240,19,19);
+  border-radius: 50%;
+  font-size: 50rpx;
+  color: #fff;
+  margin: 20rpx 0;
+}
+.navItem text{
+  font-size: 26rpx;
+}
+
+/* 推荐歌曲部分 */
+.recomendContainer{
+  padding: 20rpx;
+}
+
+/* 推荐歌曲滚动部分 */
+.recomendScroll{
+  display: flex;
+  height: 300rpx;
+}
+.recomendScroll .scrollItem {
+  margin-right: 20rpx;
+  width: 200rpx;
+}
+.recomendScroll .scrollItem image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.recomendScroll .scrollItem text{
+  font-size: 26rpx;
+  /* 单行文本溢出 */
+  /* display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+
+  /* 多行文本溢出 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;/*设置对齐模式*/
+  -webkit-line-clamp: 2 ;/*行数*/
+}
+
+.topContainer{
+  padding: 20rpx;
+}
