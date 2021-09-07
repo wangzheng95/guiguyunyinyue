@@ -1,11 +1,13 @@
 // pages/login/login.js
+import request from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    phone: '',
+    password: ''
   },
 
   /**
@@ -14,7 +16,62 @@ Page({
   onLoad: function (options) {
 
   },
-
+  handleInput (event) {
+    let type = event.currentTarget.id
+    this.setData({
+      [type]: event.detail.value
+    })
+  },
+  async login () {
+    let {phone, password} = this.data
+    if (!phone) {
+      wx.showToast({
+        title: '请输入手机号',
+        icon: 'none'
+      })
+      return
+    }
+    let phoneReg = /^1(3|4|5|6|7|8|9)\d{9}$/
+    if(!phoneReg.test(phone)){
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon: 'none'
+      })
+      return
+    }
+    if(!password){
+      wx.showToast({
+        title: '请输入密码',
+        icon: 'none'
+      })
+      return
+    }
+    // wx.showToast({
+    //   title: '验证通过',
+    // })
+    let loginRes = await request('/login/cellphone',{phone,password})
+    if(loginRes.code === 200){
+      wx.showToast({
+        title: '登录成功',
+      })
+    }else if (loginRes.code === 502){
+      wx.showToast({
+        title: '密码错误',
+        icon: 'none'
+      })
+    }else if(loginRes.code === 400){
+      wx.showToast({
+        title: '手机号错误',
+        icon: 'none'
+      })
+    }else{
+      wx.showToast({
+        title: '登录失败，请稍后重试',
+        icon: 'none'
+      })
+    }
+    console.log(loginRes);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
