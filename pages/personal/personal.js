@@ -9,14 +9,18 @@ Page({
    */
   data: {
     transformY: '',
-    trasitionY: ''
+    trasitionY: '',
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userInfo: userInfo
+    })
   },
   touchStart (event) {
     startY = event.touches[0].clientY
@@ -41,6 +45,11 @@ Page({
     this.setData({
       transformY: `translateY(0rpx)`,
       trasitionY: `transform 1s linear`
+    })
+  },
+  toLogin () {
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   },
   /**

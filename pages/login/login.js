@@ -51,8 +51,12 @@ Page({
     // })
     let loginRes = await request('/login/cellphone',{phone,password})
     if(loginRes.code === 200){
+      wx.setStorageSync('userInfo', JSON.stringify(loginRes.profile))
       wx.showToast({
         title: '登录成功',
+      })
+      wx.reLaunch({
+        url: '/pages/personal/personal',
       })
     }else if (loginRes.code === 502){
       wx.showToast({

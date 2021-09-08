@@ -39,7 +39,7 @@
     "showES6CompileOption": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.19.2",
+  "libVersion": "2.18.1",
   "appid": "wx681e46190f9b0591",
   "projectname": "guiguyunyinyue",
   "debugOptions": {
